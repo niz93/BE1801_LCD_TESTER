@@ -3,7 +3,7 @@
 // Pinout panel:
 //              +12(?) . . (?)
 //              +12(?) . . +12V backlight LED
-//                 SDA . . -3.5V LCD negative power supplay
+//                 SDA . . -3.5V LCD negative power supply
 //                 SCL . . GND LCD backlight LED
 // +4.6 data keyboard? . . (?)
 //                 GND . . (?)
@@ -25,7 +25,7 @@ short time = 50;
 void loop() {
 
 ////////////////////////////////////////////////////////////////////////
-analogWrite(11, 127);  //negative power supplay for LCD see scheme
+analogWrite(11, 127);  //negative power supply for LCD see scheme
 ////////////////////////////////////////////////////////////////////////
  if (x == 0b01111111) {
     x = 0x00;
