@@ -22,7 +22,7 @@ byte LongLCD = 0x3C;
 byte x = 0;
 byte y = 0;
 byte z = 0;
-short time = 50;
+short time = 400;
 
 void loop() {
 
@@ -535,5 +535,5 @@ if (z==1){
   Wire.write(x);
   Wire.endTransmission();
 
-
+ delay (time);
 }
