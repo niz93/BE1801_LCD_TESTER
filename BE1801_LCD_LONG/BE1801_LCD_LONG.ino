@@ -22,7 +22,7 @@ byte LongLCD = 0x3C;
 byte x = 0;
 byte y = 0;
 byte z = 0;
-short time = 50;
+short time = 400;
 
 void loop() {
 
@@ -31,7 +31,7 @@ analogWrite(11, 127);  //negative power supply for LCD see scheme
 ////////////////////////////////////////////////////////////////////////
 
 z++;
-if (z>6){z=0;}
+if (z>5){z=0;}
 
 if (z==0){
   x=0b00000000;
@@ -556,5 +556,5 @@ if (z==5){
   Wire.write(x);
   Wire.endTransmission();
 
-
+delay (time);
 }
