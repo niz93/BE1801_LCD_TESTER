@@ -384,6 +384,7 @@ if (z==5){
   Wire.endTransmission();
 
 //////////////////////////////////////////////////////////////////////// Small LCD wave 1 stroke
+ 
   Wire.beginTransmission(SmallLCD);  //1
   Wire.write(0xE1);                  
   Wire.write(0x02);
@@ -556,5 +557,7 @@ if (z==5){
   Wire.write(x);
   Wire.endTransmission();
 
+  digitalWrite(LED_BUILTIN, LOW);
 delay (time);
+  digitalWrite(LED_BUILTIN, HIGH);
 }
