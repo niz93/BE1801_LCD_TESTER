@@ -1,20 +1,15 @@
-
 // Becker Bavaria Proffesional C BE1801 LCD tester
 // Pinout panel:
-//              +12(?) . . (?)
-//              +12(?) . . +12V backlight LED
+//          + SAFE LED . . NC
+//        GND SAFE LED . . +12V backlight LED
 //                 SDA . . -3.5V LCD negative power supply
 //                 SCL . . GND LCD backlight LED
-// +4.6 data keyboard? . . (?)
-//                 GND . . (?)
-//      data keyboard? . . (?)
+//   INT from Keyboard . . IR or Photodiode
+//                 GND . . NC
+//   Vref for Keyboard . . NC
 //           +5V power . . +12V keyboard backlight LED
 
 #include <Wire.h>
-
-void setup() {
-  Wire.begin();
-}
 
 byte SmallLCD = 0x3D;
 byte LongLCD = 0x3C;
@@ -23,6 +18,25 @@ byte x = 0;
 byte y = 0;
 byte z = 0;
 short time = 400;
+
+void setup() {
+  Wire.begin();
+}
+
+//////////////////////////////////////////////////////////////////////// initialization LCD
+  Wire.beginTransmission(LongLCD);
+  Wire.write(0xD5);
+  Wire.write(0xFC);
+  Wire.write(0xF0);
+  Wire.write(0x60);
+  Wire.endTransmission();  
+
+  Wire.beginTransmission(SmallLCD);  
+  Wire.write(0xD5);                  
+  Wire.write(0xFC);
+  Wire.write(0xF0);
+  Wire.write(0x60);
+  Wire.endTransmission(); 
 
 void loop() {
 
@@ -44,20 +58,7 @@ if (z==1){
   y=0b01010101;
 }
 
-//////////////////////////////////////////////////////////////////////// initialization LCD
-  Wire.beginTransmission(LongLCD);
-  Wire.write(0xD5);
-  Wire.write(0xFC);
-  Wire.write(0xF0);
-  Wire.write(0x60);
-  Wire.endTransmission();  
-
-  Wire.beginTransmission(SmallLCD);  
-  Wire.write(0xD5);                  
-  Wire.write(0xFC);
-  Wire.write(0xF0);
-  Wire.write(0x60);
-  Wire.endTransmission();  
+ 
  
 //////////////////////////////////////////////////////////////////////// Long LCD wave
 
